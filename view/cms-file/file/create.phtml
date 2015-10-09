@@ -1,0 +1,37 @@
+<?php 
+/**
+ * CoolMS2 File Module (http://www.coolms.com/)
+ *
+ * @link      http://github.com/coolms/file for the canonical source repository
+ * @copyright Copyright (c) 2006-2015 Altgraphic, ALC (http://www.altgraphic.com)
+ * @license   http://www.coolms.com/license/new-bsd New BSD License
+ * @author    Dmitry Popov <d.popov@altgraphic.com>
+ */
+
+namespace CmsFile;
+
+$this->fieldset->get('folders')
+    ->setAttributes(['size' => 5])
+    ->setOptions([
+        'twb' => [
+            'decorators' => [
+                'col' => ['class' => 'col-xs-12 col-sm-8'],
+                'formGroup' => ['elements' => 'tags'],
+            ],
+        ],
+    ]);
+
+$this->fieldset->get('tags')
+    ->setAttributes(['size' => 5])
+    ->setOptions([
+        'twb' => [
+            'decorators' => [
+                'col' => ['class' => 'col-xs-12 col-sm-4'],
+            ],
+        ],
+    ]);
+
+$this->fieldset->get('description')->setAttributes(['rows' => 5]);
+
+?>
+<?= $this->formCollection($this->fieldset, true, false);

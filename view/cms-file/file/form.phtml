@@ -1,0 +1,76 @@
+<?php 
+/**
+ * CoolMS2 File module (http://www.coolms.com/)
+ * 
+ * @link      http://github.com/coolms/CmsFile for the canonical source repository
+ * @copyright Copyright (c) 2006-2015 Altgraphic, ALC (http://www.altgraphic.com)
+ * @license   http://www.coolms.com/license/new-bsd New BSD License
+ * @author    Dmitry Popov <d.popov@altgraphic.com>
+ */
+
+namespace CmsFile;
+
+// Set translation and namespace options here
+
+$this->formCollection()->setTranslatorTextDomain(__NAMESPACE__);
+$this->formLabel()->setTranslatorTextDomain(__NAMESPACE__);
+$this->formMessages()->setTranslatorTextDomain(__NAMESPACE__);
+$this->formPanel()->setTranslatorTextDomain(__NAMESPACE__);
+$this->formRow()->setTranslatorTextDomain(__NAMESPACE__);
+
+// Set form fields classes and placeholders here
+
+$form = $this->form;
+
+$form->setAttributes([
+        'class'  => 'form-horizontal cms-form cms-file-form cms-file-form-file',
+        'role'   => 'form',
+    ])
+    ->setLabelAttributes(['twb' => ['class' => 'panel-title']]);
+
+$form->get('submit')
+    ->setAttributes(['twb'   => ['class' => 'btn btn-primary btn-block']])
+    ->setOptions([
+        'twb' => [
+            'decorators' => [
+                'col' => ['class' => 'col-xs-12 col-sm-8'],
+                'formGroup' => ['elements' => 'reset'],
+            ],
+        ]
+    ]);
+
+$form->get('reset')
+    ->setAttributes(['twb' => ['class' => 'btn btn-default btn-block']])
+    ->setOptions([
+        'twb' => [
+            'decorators' => [
+                'col' => ['class' => 'col-xs-12 col-sm-4'],
+            ],
+        ],
+    ]);
+
+$form->prepare();
+
+?>
+<?= $this->form()->openTag($form); ?>
+  <div class="panel panel-primary">
+    <?php if ($form->getLabel()): ?>
+    <div class="panel-heading">
+      <?= $this->glyphicon('user'); ?>&nbsp;&nbsp;<?= $this->formLabel($form); ?>
+    </div>
+    <?php endif; ?>
+    <div class="panel-body">
+      <?= $this->formMessages($form); ?>
+      <?= $this->formElement($this->fieldset ?: $form->get('file')); ?>
+    </div>
+    <div class="panel-footer clearfix">
+      <?php if ($form->hasCaptcha()): ?>
+        <?= $this->formRow($form->getCaptcha()); ?>
+      <?php endif; ?>
+      <?php if ($form->hasCsrf()): ?>
+        <?= $this->formRow($form->getCsrf()); ?>
+      <?php endif; ?>
+      <?= $this->formRow($form->get('submit')); ?>
+    </div>
+  </div>
+<?= $this->form()->closeTag();

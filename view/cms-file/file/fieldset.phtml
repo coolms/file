@@ -1,0 +1,46 @@
+<?php 
+/**
+ * CoolMS2 File Module (http://www.coolms.com/)
+ *
+ * @link      http://github.com/coolms/file for the canonical source repository
+ * @copyright Copyright (c) 2006-2015 Altgraphic, ALC (http://www.altgraphic.com)
+ * @license   http://www.coolms.com/license/new-bsd New BSD License
+ * @author    Dmitry Popov <d.popov@altgraphic.com>
+ */
+
+namespace CmsFile;
+
+$this->formCollection()->setTranslatorTextDomain(__NAMESPACE__);
+
+// Set form fields classes and placeholders here
+/*$this->fieldset->get('folder')->setOption('twbs', [
+    'col' => ['class' => 'col-xs-12 col-sm-6'],
+    'title' => [
+        'type' => 'formGroupElement',
+        'content' => 'title',
+        'order' => 9050,
+        'placement' => 'append',
+    ],
+]);
+
+$this->fieldset->get('title')->setOption('twbs', [
+    'col' => ['class' => 'col-xs-12 col-sm-6'],
+]);
+
+$this->fieldset->get('folders')->setOption('twbs', [
+    'col' => ['class' => 'col-xs-12 col-sm-6'],
+    'description' => [
+        'type' => 'formGroupElement',
+        'content' => 'description',
+        'order' => 9050,
+        'placement' => 'append',
+    ],
+]);
+
+$this->fieldset->get('description')->setAttributes(['rows' => 15])
+    ->setOption('twbs', [
+        'col' => ['class' => 'col-xs-12 col-sm-6'],
+    ]);*/
+
+?>
+<?= $this->formCollection($this->fieldset, true, false);
