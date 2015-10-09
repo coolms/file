@@ -10,9 +10,8 @@
 
 namespace CmsFile\Mapping\Traits;
 
-use Zend\Form\Annotation as Form,
-    Doctrine\Common\Collections\ArrayCollection,
-    Doctrine\Common\Collections\Collection,
+use ArrayObject,
+    Zend\Form\Annotation as Form,
     CmsFile\Mapping\FileInterface;
 
 trait FileableTrait
@@ -44,7 +43,7 @@ trait FileableTrait
      */
     public function __construct()
     {
-        $this->files = new ArrayCollection();
+        $this->files = new ArrayObject($this->files);
     }
 
     /**
@@ -71,7 +70,7 @@ trait FileableTrait
      */
     public function addFile(FileInterface $file)
     {
-        $this->getFiles()->add($file);
+        $this->files[] = $file;
     }
 
     /**
@@ -89,7 +88,11 @@ trait FileableTrait
      */
     public function removeFile(FileInterface $file)
     {
-        $this->getFiles()->removeElement($file);
+        foreach ($this->files as $key => $data) {
+            if ($file === $data) {
+                unset($this->files[$key]);
+            }
+        }
     }
 
     /**
@@ -98,7 +101,13 @@ trait FileableTrait
      */
     public function hasFile(FileInterface $file)
     {
-        return $this->getFiles()->contains($file);
+        foreach ($this->files as $data) {
+            if ($file === $data) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -106,11 +115,11 @@ trait FileableTrait
      */
     public function clearFiles()
     {
-        $this->getFiles()->clear();
+        $this->removeFiles($this->files);
     }
 
     /**
-     * @return Collection
+     * @return FileInterface[]
      */
     public function getFiles()
     {

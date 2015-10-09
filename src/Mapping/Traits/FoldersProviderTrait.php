@@ -10,7 +10,8 @@
 
 namespace CmsFile\Mapping\Traits;
 
-use Zend\Form\Annotation as Form,
+use ArrayObject,
+    Zend\Form\Annotation as Form,
     Doctrine\Common\Collections\ArrayCollection,
     Doctrine\Common\Collections\Collection,
     CmsFile\Mapping\FolderInterface;
@@ -18,7 +19,7 @@ use Zend\Form\Annotation as Form,
 trait FoldersProviderTrait
 {
     /**
-     * @var FolderInterface
+     * @var FolderInterface[]
      *
      * @Form\Type("ObjectSelect")
      * @Form\Required(false)
@@ -37,7 +38,7 @@ trait FoldersProviderTrait
      */
     public function __construct()
     {
-        $this->folders = new ArrayCollection();
+        $this->folders = new ArrayObject($this->folders);
     }
 
     /**
@@ -64,7 +65,7 @@ trait FoldersProviderTrait
      */
     public function addFolder(FolderInterface $folder)
     {
-        $this->getFolders()->add($folder);
+        $this->folders[] = $folder;
     }
 
     /**
@@ -82,7 +83,11 @@ trait FoldersProviderTrait
      */
     public function removeFolder(FolderInterface $folder)
     {
-        $this->getFolders()->removeElement($folder);
+        foreach ($this->folders as $key => $data) {
+            if ($file === $data) {
+                unset($this->folders[$key]);
+            }
+        }
     }
 
     /**
@@ -91,7 +96,13 @@ trait FoldersProviderTrait
      */
     public function hasFolder(FolderInterface $folder)
     {
-        return $this->getFolders()->contains($folder);
+        foreach ($this->files as $data) {
+            if ($file === $data) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -99,11 +110,11 @@ trait FoldersProviderTrait
      */
     public function clearFolders()
     {
-        $this->getFiles()->clear();
+        $this->removeFolders($this->folders);
     }
 
     /**
-     * @return Collection
+     * @return FolderInterface[]
      */
     public function getFolders()
     {
