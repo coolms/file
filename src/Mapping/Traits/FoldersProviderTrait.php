@@ -12,8 +12,6 @@ namespace CmsFile\Mapping\Traits;
 
 use ArrayObject,
     Zend\Form\Annotation as Form,
-    Doctrine\Common\Collections\ArrayCollection,
-    Doctrine\Common\Collections\Collection,
     CmsFile\Mapping\FolderInterface;
 
 trait FoldersProviderTrait
