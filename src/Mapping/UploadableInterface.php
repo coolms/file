@@ -14,6 +14,7 @@ interface UploadableInterface
 {
     /**
      * @param array $fileInfo
+     * @return self
      */
     public function setUpload(array $fileInfo);
 

@@ -24,10 +24,12 @@ trait UploadableTrait
 
     /**
      * @param array $fileInfo
+     * @return self
      */
     public function setUpload(array $fileInfo)
     {
         $this->upload = $fileInfo;
+        return $this;
     }
 
     /**
