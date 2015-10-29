@@ -25,7 +25,7 @@ class File extends BaseFile
     public function getInputSpecification()
     {
         if (null === $this->inputSpecification) {
-            return parent::getInputSpecification();
+            $this->setInputSpecification(parent::getInputSpecification());
         }
 
         return $this->inputSpecification;
@@ -37,7 +37,11 @@ class File extends BaseFile
      */
     public function setInputSpecification(array $inputSpec)
     {
-        $this->inputSpecification = $inputSpec;
+        $this->inputSpecification = array_merge(
+            (array) $this->inputSpecification,
+            $inputSpec
+        );
+
         return $this;
     }
 }

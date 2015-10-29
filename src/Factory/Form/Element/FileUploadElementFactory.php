@@ -26,7 +26,7 @@ class FileUploadElementFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $services = $serviceLocator->getServiceLocator();
-        return $this->configureElement(new File(), $services);
+        return $this->configureElement($serviceLocator->get('File'), $services);
     }
 
     /**
