@@ -48,51 +48,66 @@ trait FileableTrait
 
     /**
      * @param FileInterface[] $files
+     * @return self
      */
     public function setFiles($files)
     {
         $this->clearFiles();
         $this->addFiles($files);
+
+        return $this;
     }
 
     /**
      * @param FileInterface[] $files
+     * @return self
      */
     public function addFiles($files)
     {
         foreach ($files as $file) {
             $this->addFile($file);
         }
+
+        return $this;
     }
 
     /**
      * @param FileInterface $file
+     * @return self
      */
     public function addFile(FileInterface $file)
     {
         $this->files[] = $file;
+        return $this;
     }
 
     /**
      * @param FileInterface[] $files
+     * @return self
      */
     public function removeFiles($files)
     {
         foreach ($files as $file) {
             $this->removeFile($file);
         }
+
+        return $this;
     }
 
     /**
      * @param FileInterface $file
+     * @return self
      */
     public function removeFile(FileInterface $file)
     {
-        foreach ($this->files as $key => $data) {
-            if ($file === $data) {
+        foreach ($this->files as $key => $entity) {
+            if ($file === $entity) {
                 unset($this->files[$key]);
+                break;
             }
         }
+
+        return $this;
     }
 
     /**
@@ -101,8 +116,8 @@ trait FileableTrait
      */
     public function hasFile(FileInterface $file)
     {
-        foreach ($this->files as $data) {
-            if ($file === $data) {
+        foreach ($this->files as $entity) {
+            if ($file === $entity) {
                 return true;
             }
         }
@@ -112,10 +127,13 @@ trait FileableTrait
 
     /**
      * Removes all files
+     *
+     * @return self
      */
     public function clearFiles()
     {
         $this->removeFiles($this->files);
+        return $this;
     }
 
     /**

@@ -41,51 +41,66 @@ trait FoldersProviderTrait
 
     /**
      * @param FolderInterface[] $folders
+     * @return self
      */
     public function setFolders($folders)
     {
         $this->clearFolders();
         $this->addFolders($folders);
+
+        return $this;
     }
 
     /**
      * @param FolderInterface[] $folders
+     * @return self
      */
     public function addFolders($folders)
     {
         foreach ($folders as $folder) {
             $this->addFolder($folder);
         }
+
+        return $this;
     }
 
     /**
      * @param FolderInterface $folder
+     * @return self
      */
     public function addFolder(FolderInterface $folder)
     {
         $this->folders[] = $folder;
+        return $this;
     }
 
     /**
      * @param FolderInterface[] $files
+     * @return self
      */
     public function removeFolders($folders)
     {
         foreach ($folders as $folder) {
             $this->removeFolder($folder);
         }
+
+        return $this;
     }
 
     /**
      * @param FolderInterface $folder
+     * @return self
      */
     public function removeFolder(FolderInterface $folder)
     {
-        foreach ($this->folders as $key => $data) {
-            if ($file === $data) {
+        foreach ($this->folders as $key => $entity) {
+            if ($file === $entity) {
                 unset($this->folders[$key]);
+                break;
             }
         }
+
+        return $this;
     }
 
     /**
@@ -94,8 +109,8 @@ trait FoldersProviderTrait
      */
     public function hasFolder(FolderInterface $folder)
     {
-        foreach ($this->folders as $data) {
-            if ($folder === $data) {
+        foreach ($this->folders as $entity) {
+            if ($folder === $entity) {
                 return true;
             }
         }
@@ -105,10 +120,13 @@ trait FoldersProviderTrait
 
     /**
      * Removes all folders
+     *
+     * @return self
      */
     public function clearFolders()
     {
         $this->removeFolders($this->folders);
+        return $this;
     }
 
     /**
