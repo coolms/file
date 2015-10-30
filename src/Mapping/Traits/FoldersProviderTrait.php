@@ -36,7 +36,7 @@ trait FoldersProviderTrait
      */
     public function __construct()
     {
-        $this->folders = new ArrayObject($this->folders);
+        
     }
 
     /**
@@ -94,8 +94,8 @@ trait FoldersProviderTrait
      */
     public function hasFolder(FolderInterface $folder)
     {
-        foreach ($this->files as $data) {
-            if ($file === $data) {
+        foreach ($this->folders as $data) {
+            if ($folder === $data) {
                 return true;
             }
         }

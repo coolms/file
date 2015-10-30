@@ -43,7 +43,7 @@ trait FileableTrait
      */
     public function __construct()
     {
-        $this->files = new ArrayObject($this->files);
+        
     }
 
     /**
