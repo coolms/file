@@ -25,6 +25,7 @@ interface FileInterface extends
 
     /**
      * @param FolderInterface $folder
+     * @return self
      */
     public function setFolder(FolderInterface $folder);
 
@@ -40,6 +41,7 @@ interface FileInterface extends
 
     /**
      * @param string $name
+     * @return self
      */
     public function setFilename($name);
 
@@ -50,6 +52,7 @@ interface FileInterface extends
 
     /**
      * @param string $ext
+     * @return self
      */
     public function setExtension($ext);
 
@@ -60,6 +63,7 @@ interface FileInterface extends
 
     /**
      * @param string $name
+     * @return self
      */
     public function setBasename($name);
 
@@ -85,6 +89,7 @@ interface FileInterface extends
 
     /**
      * @param string $hidden
+     * @return self
      */
     public function setIsHidden($hidden = true);
 
@@ -95,6 +100,7 @@ interface FileInterface extends
 
     /**
      * @param bool $access
+     * @return self
      */
     public function setIsPublic($access = true);
 

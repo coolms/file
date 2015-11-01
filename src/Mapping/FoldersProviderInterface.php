@@ -14,26 +14,31 @@ interface FoldersProviderInterface
 {
     /**
      * @param FolderInterface[] $folders
+     * @return self
      */
     public function setFolders($folders);
 
     /**
      * @param FolderInterface[] $folders
+     * @return self
      */
     public function addFolders($folders);
 
     /**
      * @param FolderInterface $folder
+     * @return self
      */
     public function addFolder(FolderInterface $folder);
 
     /**
      * @param FolderInterface[] $folders
+     * @return self
      */
     public function removeFolders($folders);
 
     /**
      * @param FolderInterface $folder
+     * @return self
      */
     public function removeFolder(FolderInterface $folder);
 
@@ -45,6 +50,8 @@ interface FoldersProviderInterface
 
     /**
      * Removes all folders
+     *
+     * @return self
      */
     public function clearFolders();
 
