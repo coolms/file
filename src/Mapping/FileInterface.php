@@ -80,6 +80,11 @@ interface FileInterface extends
     /**
      * @return string
      */
+    public function getUri();
+
+    /**
+     * @return string
+     */
     public function getType();
 
     /**

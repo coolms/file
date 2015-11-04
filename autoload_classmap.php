@@ -43,6 +43,7 @@ return array(
     'CmsFile\Service\FolderServiceAwareTrait'               => __DIR__ . '/src/Service/FolderServiceAwareTrait.php',
     'CmsFile\Service\FolderServiceInterface'                => __DIR__ . '/src/Service/FolderServiceInterface.php',
     'CmsFile\Stdlib\FileUtils'                              => __DIR__ . '/src/Stdlib/FileUtils.php',
+    'CmsFile\View\Helper\BasePath'                          => __DIR__ . '/src/View/Helper/BasePath.php',
     'CmsFileTest\Framework\TestCase'                        => __DIR__ . '/tests/Framework/TestCase.php',
     'CmsFileTest\SampleTest'                                => __DIR__ . '/tests/SampleTest.php',
 );
