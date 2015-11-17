@@ -10,8 +10,7 @@
 
 namespace CmsFile\Mapping\Traits;
 
-use ArrayObject,
-    Zend\Form\Annotation as Form,
+use Zend\Form\Annotation as Form,
     CmsFile\Mapping\FolderInterface;
 
 trait FoldersProviderTrait
@@ -24,7 +23,8 @@ trait FoldersProviderTrait
      * @Form\Attributes({"multiple":true,"size":5})
      * @Form\Options({
      *      "target_class":"CmsFile\Mapping\FolderInterface",
-     *      "label":"Select folders"})
+     *      "label":"Select folders",
+     *      "text_domain":"CmsFile"})
      * @Form\Flags({"priority":0})
      */
     protected $folders = [];

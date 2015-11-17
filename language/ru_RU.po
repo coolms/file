@@ -20,6 +20,9 @@ msgstr "Файлы"
 msgid "File"
 msgstr "Файл"
 
+msgid "Select folder"
+msgstr "Выберите папку"
+
 msgid "Select folders"
 msgstr "Выберите папки"
 
@@ -38,11 +41,29 @@ msgstr "Загрузить файлы"
 msgid "Title"
 msgstr "Название файла"
 
+msgid "Hash"
+msgstr "Хэш"
+
+msgid "Filename"
+msgstr "Имя файла"
+
+msgid "Extension"
+msgstr "Расширение"
+
+msgid "MIME Type"
+msgstr "MIME-тип"
+
+msgid "Size"
+msgstr "Размер"
+
 msgid "Short description"
 msgstr "Краткое описание файла"
 
 msgid "Description"
 msgstr "Описание файла"
+
+msgid "Hidden"
+msgstr "Скрытый"
 
 msgid "Public access"
 msgstr "Общий доступ"
